@@ -1,0 +1,30 @@
+{
+  "name": "Tram",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Diachi": {
+      "type": "string",
+      "required": true
+    },
+    "Ten": {
+      "type": "string",
+      "required": true
+    },
+    "Trangthai": {
+      "type": "boolean",
+      "required": true
+    },
+    "AddCode": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

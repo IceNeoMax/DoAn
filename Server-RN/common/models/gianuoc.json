@@ -1,0 +1,26 @@
+{
+  "name": "Gianuoc",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Muc1": {
+      "type": "number",
+      "required": true
+    },
+    "Muc2": {
+      "type": "number",
+      "required": true
+    },
+    "Muc3": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

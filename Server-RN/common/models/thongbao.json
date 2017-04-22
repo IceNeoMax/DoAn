@@ -1,0 +1,26 @@
+{
+  "name": "Thongbao",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "User_id": {
+      "type": "string",
+      "required": true
+    },
+    "Noidung": {
+      "type": "string",
+      "required": true
+    },
+    "Thoigian": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

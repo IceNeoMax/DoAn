@@ -1,0 +1,25 @@
+{
+  "name": "Chinhanh",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Ten": {
+      "type": "string",
+      "required": true
+    },
+    "Luongnuoc": {
+      "type": "number"
+    },
+    "TrangThai": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,54 @@
+{
+  "name": "CN3",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "User_id": {
+      "type": "string",
+      "required": true
+    },
+    "Thang": {
+      "type": "number",
+      "required": true
+    },
+    "Nam": {
+      "type": "number",
+      "required": true
+    },
+    "Sonuoc": {
+      "type": "number",
+      "required": true
+    },
+    "AddCode": {
+      "type": "number",
+      "required": true
+    },
+    "Nocuoc": {
+      "type": "Boolean",
+      "required": true
+    },
+    "Khoa": {
+      "type": "Boolean",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "nsd1": {
+      "type": "belongsTo",
+      "model": "CN3",
+      "foreignKey": "id"
+    },
+    "sucos": {
+      "type": "hasMany",
+      "model": "Suco",
+      "foreignKey": "User_id",
+      "through": "CN3"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title> Quản lí nước Hà Nội</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/to-do.css">
+    <script src="assets/js/chart-master/Chart.js"></script>
+
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>TRUNG TÂM CẤP NƯỚC HÀ NỘI</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="../lock_screen.html">Đăng Xuất</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+
+              	  <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
+              	  <h5 class="centered">XIN CHÀO ADMIN!</h5>
+
+                  <li class="mt">
+                      <a  href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Bảng Điều Khiển</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;">
+                          <i class="fa fa-desktop"></i>
+                          <span>Quản Lí Khách Hàng</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="NSD1.html">Thêm Khách Hàng</a></li>
+                          <li><a  href="NSD2.html">Thông Tin Khách Hàng</a></li>
+                          <li><a  href="NSD3.html">Quản Lí Sự Cố</a></li>
+                          <li><a  href="NSD4.html">Tất Cả Khách Hàng</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a class="active" href="javascript:;" >
+                          <i class="fa fa-cogs"></i>
+                          <span>Hệ Thống</span>
+                      </a>
+                      <ul class="sub">
+                          <li class="active" ><a href="gianuoc.html">Giá Nước</a></li>
+                          <li><a  href="Capnuoc.html">Cấp Nước</a></li>
+                          <li><a  href="Tramnuoc.html">Các Trạm</a></li>
+                      </ul>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i>Bảng Giá Nước</h3>
+            <div class="row mt">
+                <div class="col-md-12">
+                    <section class="task-panel tasks-widget">
+                  <div class="panel-heading">
+                        <div class="pull-left"><h5><i class="fa fa-tasks"></i> Điều Chỉnh</h5></div>
+
+                        <br>
+                  </div>
+                        <div class="panel-body" style="font-size:17px;">
+                            <div class="task-content">
+
+                                <ul class="task-list">
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="col-md-4">Mức 20m<sup>3</sup> đầu tiên</span>
+                                            <span class="col-md-2 1stPrice"></span>
+                                            <div class="pull-right hidden-phone">
+                                                <div style="display:none; color:blue;" class="change-suc1">Lưu Thành Công!</div>
+                                                <button class="btn btn-primary btn-xs 1stFix"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-success btn-xs 1stDone"><i class=" fa fa-check"></i></button>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="col-md-4">Mức 20m<sup>3</sup> đến 30m<sup>3</sup></span>
+                                            <span class="col-md-2 2ndPrice"></span>
+                                            <div class="pull-right hidden-phone">
+                                              <div style="display:none; color:blue;" class="change-suc2">Lưu Thành Công!</div>
+                                                <button class="btn btn-primary btn-xs 2ndFix"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-success btn-xs 2ndDone"><i class=" fa fa-check"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="task-title">
+                                            <span class="col-md-4">Từ trên 30m<sup>3</sup></span>
+                                            <span class="col-md-2 3rdPrice"></span>
+                                            <div class="pull-right hidden-phone">
+                                              <div style="display:none; color:blue;" class="change-suc3">Lưu Thành Công!</div>
+                                                <button class="btn btn-primary btn-xs 3rdFix"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-success btn-xs 3rdDone"><i class=" fa fa-check"></i></button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </section>
+                </div><!-- /col-md-12-->
+            </div><!-- /row -->
+
+    </section>
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2017 - Cấp nước Hà Nội
+              <a href="index.html#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+    <script src="assets/js/axios.min.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>
+	<script src="assets/js/zabuto_calendar.js"></script>
+
+
+
+	<script type="application/javascript">
+        $(document).ready(function () {
+          axios.get('http://localhost:3000/api/Gianuocs/58d9d4ad1732ce045e264cc5')
+          .then(res=> {
+            console.log(res);
+            $('.1stPrice').append(res.data.Muc1);
+            $('.2ndPrice').append(res.data.Muc2);
+            $('.3rdPrice').append(res.data.Muc3);
+
+              $('.1stFix').click(function(){
+                $('.change-suc1').css('display','none');
+                $('.1stPrice').text('');
+                $('.1stPrice').append('<input type="text" value="'+res.data.Muc1+'">');
+                $('.1stDone').click(function(){
+                  console.log($('.1stPrice input').val());
+                  axios.patch('http://localhost:3000/api/Gianuocs/58d9d4ad1732ce045e264cc5',{
+                    "Muc1" : $('.1stPrice input').val()
+                  }).then(res=>{
+                    $('.change-suc1').css('display','block');
+                    $('.1stPrice').text(''+$('.1stPrice input').val());
+                    $('.1stPrice input').val('');
+                  });
+                });
+              });
+
+              $('.2ndFix').click(function(){
+                $('.change-suc2').css('display','none');
+                $('.2ndPrice').text('');
+                $('.2ndPrice').append('<input type="text" value="'+res.data.Muc2+'">');
+                $('.2ndDone').click(function(){
+                  console.log($('.2ndPrice input').val());
+                  axios.patch('http://localhost:3000/api/Gianuocs/58d9d4ad1732ce045e264cc5',{
+                    "Muc2" : $('.2ndPrice input').val()
+                  }).then(res=>{
+                    $('.change-suc2').css('display','block');
+                    $('.2ndPrice').text(''+$('.2ndPrice input').val());
+                    $('.2ndPrice input').val('');
+                  });
+                });
+              });
+
+              $('.3rdFix').click(function(){
+                $('.change-suc3').css('display','none');
+                $('.3rdPrice').text('');
+                $('.3rdPrice').append('<input type="text" value="'+res.data.Muc3+'">');
+                $('.3rdDone').click(function(){
+                  console.log($('.3rdPrice input').val());
+                  axios.patch('http://localhost:3000/api/Gianuocs/58d9d4ad1732ce045e264cc5',{
+                    "Muc3" : $('.3rdPrice input').val()
+                  }).then(res=>{
+                    $('.change-suc3').css('display','block');
+                    $('.3rdPrice').text(''+$('.3rdPrice input').val());
+                    $('.3rdPrice input').val('');
+                  });
+                });
+              });
+
+          });
+        });
+
+
+
+    </script>
+
+
+  </body>
+</html>

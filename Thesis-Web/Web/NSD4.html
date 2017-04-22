@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>Quản lí nước Hà Nội</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>TRUNG TÂM CẤP NƯỚC HÀ NỘI</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+
+            </div>
+            <div class="top-menu">
+              <ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="../lock_screen.html">Đăng Xuất</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+
+              	  <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
+                  <h5 class="centered">XIN CHÀO ADMIN!</h5>
+
+                  <li class="mt">
+                      <a href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Bảng Điều Khiển</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a class="active" href="javascript:;">
+                          <i class="fa fa-desktop"></i>
+                          <span>Quản Lí Khách Hàng</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="NSD1.html">Thêm Khách Hàng</a></li>
+                          <li><a  href="NSD2.html">Thông Tin Khách Hàng</a></li>
+                          <li><a  href="NSD3.html">Quản Lí Sự Cố</a></li>
+                          <li class="active"><a  href="NSD4.html">Tất Cả Khách Hàng</a></li>
+
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-cogs"></i>
+                          <span>Hệ Thống</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="gianuoc.html">Giá Nước</a></li>
+                          <li><a  href="Capnuoc.html">Cấp Nước</a></li>
+                          <li><a  href="Tramnuoc.html">Các Trạm</a></li>
+                      </ul>
+                  </li>
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper site-min-height">
+          	<div class="row mt">
+          		<div class="col-lg-12">
+                <div class="content-panel">
+                <h4><i class="fa fa-angle-right"></i> Bảng Khách Hàng</h4>
+                    <section id="unseen">
+                      <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th>ID Khách Hàng</th>
+                            <th>Tên</th>
+                            <th>Địa Chỉ</th>
+                            <th>Address Code</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                      </tbody>
+                  </table>
+                  </section>
+          		</div>
+          	</div>
+
+		</section><! --/wrapper -->
+      </section><!-- /MAIN CONTENT -->
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2017 - Cấp nước Hà Nội
+              <a href="blank.html#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/firebase.js"></script>
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <!--script for this page-->
+
+  <script>
+      //custom select box
+      var config = {
+        apiKey: "AIzaSyCoSRUrL9OYlxrhzkJb1I2GeR-ozJmqyW4",
+        authDomain: "thesis-cdeaa.firebaseapp.com",
+        databaseURL: "https://thesis-cdeaa.firebaseio.com",
+        storageBucket: "thesis-cdeaa.appspot.com",
+        messagingSenderId: "873234581670"
+      };
+      firebase.initializeApp(config);
+      $(document).ready(function () {
+          axios.get('http://localhost:3000/api/NSDs/')
+          .then(res=> {
+            for (let val in res.data){
+              $('table tbody').append('<tr><td>'+res.data[val].id+'</td><td>'+res.data[val].Ten+'</td><td>'+res.data[val].Diachi+'</td><td>'+res.data[val].AddCode+'</td></tr>');
+            }
+          });
+      });
+
+  </script>
+
+  </body>
+</html>

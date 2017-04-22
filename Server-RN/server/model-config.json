@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "NSD": {
+    "dataSource": "Thesis",
+    "public": true
+  },
+  "CN3": {
+    "dataSource": "Thesis",
+    "public": true
+  },
+  "Suco": {
+    "dataSource": "Thesis",
+    "public": true
+  },
+  "Gianuoc": {
+    "dataSource": "Thesis",
+    "public": true
+  },
+  "Thongbao": {
+    "dataSource": "Thesis",
+    "public": true
+  },
+  "Lichsugd": {
+    "dataSource": "Thesis",
+    "public": true
+  },
+  "Tram": {
+    "dataSource": "Thesis",
+    "public": true
+  },
+  "Chinhanh": {
+    "dataSource": "Thesis",
+    "public": true
+  }
+}

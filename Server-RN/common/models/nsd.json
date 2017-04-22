@@ -1,0 +1,40 @@
+{
+  "name": "NSD",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "User_name": {
+      "type": "string",
+      "required": true
+    },
+    "Password": {
+      "type": "string",
+      "required": true
+    },
+    "Ten": {
+      "type": "string",
+      "required": true
+    },
+    "Diachi": {
+      "type": "string",
+      "required": true
+    },
+    "AddCode": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "CN31": {
+      "type": "belongsTo",
+      "model": "CN3",
+      "foreignKey": "id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title> Quản lí nước Hà Nội</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/to-do.css">
+    <script src="assets/js/chart-master/Chart.js"></script>
+
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>TRUNG TÂM CẤP NƯỚC HÀ NỘI</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li><a class="logout" href="../lock_screen.html">Đăng Xuất</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+
+              	  <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></p>
+              	  <h5 class="centered">XIN CHÀO ADMIN!</h5>
+
+                  <li class="mt">
+                      <a  href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Bảng Điều Khiển</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;">
+                          <i class="fa fa-desktop"></i>
+                          <span>Quản Lí Khách Hàng</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="NSD1.html">Thêm Khách Hàng</a></li>
+                          <li><a  href="NSD2.html">Thông Tin Khách Hàng</a></li>
+                          <li><a  href="NSD3.html">Quản Lí Sự Cố</a></li>
+                          <li><a  href="NSD4.html">Tất Cả Khách Hàng</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a class="active" href="javascript:;" >
+                          <i class="fa fa-cogs"></i>
+                          <span>Hệ Thống</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a href="gianuoc.html">Giá Nước</a></li>
+                          <li class="active"><a  href="Capnuoc.html">Cấp Nước</a></li>
+                          <li><a  href="Tramnuoc.html">Các Trạm</a></li>
+                      </ul>
+                  </li>
+                
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Thêm Trạm</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input style="margin-bottom: 10px;" type="text" id="Ten" name="text" placeholder="Tên Trạm" autocomplete="off" class="form-control placeholder-no-fix">
+                        <input style="margin-bottom: 10px;" type="text" id="Diachi" name="text" placeholder="Địa Chỉ" autocomplete="off" class="form-control placeholder-no-fix">
+                        <input style="margin-bottom: 10px;" type="text" id="AddressCode" name="text" placeholder="Address Code" autocomplete="off" class="form-control placeholder-no-fix">
+
+                    </div>
+                    <div class="modal-footer centered">
+                        <button data-dismiss="modal" class="btn btn-theme04" type="button">Thoát</button>
+                        <button class="btn btn-theme03 addTram" type="button">Thêm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+          <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i>Các Trạm Nước</h3>
+            <div class="row mt TramChinh">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="content-panel">
+                    <h4><i class="fa fa-angle-right"></i> Thêm Trạm</h4>
+                    <div class="panel-body">
+                        <center>
+                          <i data-toggle="modal" href="#myModal" style="font-size: 15vh; color: rgba(29, 28, 28, 0.13);" class="fa fa-plus" aria-hidden="true"></i>
+                        </center>
+                    </div>
+                </div>
+              </div><!-- col-lg-4 -->
+            </div><!-- /row -->
+
+    </section>
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2017 - Cấp nước Hà Nội
+              <a href="index.html#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+    <script src="assets/js/axios.min.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>
+	<script src="assets/js/zabuto_calendar.js"></script>
+
+
+
+	<script type="application/javascript">
+    $(document).ready(function () {
+      let date = new Date();
+      let month = date.getMonth()+1;
+      let year = date.getFullYear();
+
+    });
+  </script>
+
+
+  </body>
+</html>

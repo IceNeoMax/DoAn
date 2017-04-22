@@ -1,0 +1,45 @@
+{
+  "name": "Lichsugd",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "User_id": {
+      "type": "string",
+      "required": true
+    },
+    "Thang": {
+      "type": "number",
+      "required": true
+    },
+    "Nam": {
+      "type": "number",
+      "required": true
+    },
+    "Sodau": {
+      "type": "number",
+      "required": true
+    },
+    "Socuoi": {
+      "type": "number",
+      "required": true
+    },
+    "Tongso": {
+      "type": "number"
+    },
+    "TongTien": {
+      "type": "number",
+      "required": true
+    },
+    "Nocuoc": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
