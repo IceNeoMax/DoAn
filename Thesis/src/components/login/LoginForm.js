@@ -14,6 +14,7 @@ import {
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser, seeNotif } from '../../actions';
 import { Spinner } from '../common';
+import TestNoti from '../NSD/TestNoti';
 
 const { width, height } = Dimensions.get("window");
 
@@ -25,7 +26,7 @@ const personIcon = require("./login1_person.png");
 class LoginForm extends Component {
   componentWillMount(){
     AsyncStorage.getItem("myKey").then((value) => {
-            console.log(value);
+            // console.log(value);
         }).done();
   }
   onEmailChange(text) {
@@ -60,6 +61,8 @@ class LoginForm extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <TestNoti />
+
         <Image source={background} style={styles.background}>
           <View style={styles.markWrap}>
             <Image source={mark} style={styles.mark} resizeMode="contain" />

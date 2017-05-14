@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { localURL } from '../Global.js';
 import axios from 'axios';
+import TestNoti from './TestNoti';
 
 const { width, height } = Dimensions.get("window");
 const background = require("../common/login1_bg.png");
@@ -47,11 +48,13 @@ class Bill extends Component {
         });
     });
   }
+  // <TestNoti />
 
   renderBill(){
     // console.log(this.state.data);
     return(
       <View>
+
         <Text style={[styles.text, styles.textTop]}>
           Hóa Đơn tháng {this.state.data.Thang}-{this.state.data.Nam}:
         </Text>
@@ -78,9 +81,9 @@ class Bill extends Component {
       <ScrollView>
         <View style={styles.container}>
           <Image source={background} style={styles.background}>
-
             {this.renderBill()}
           </Image>
+          <TestNoti />
         </View>
         </ScrollView>
     );

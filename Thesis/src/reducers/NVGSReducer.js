@@ -14,7 +14,8 @@ const INITIAL_STATE = {
   user: null,
   error: '',
   loading: false,
-  writeNum: false
+  writeNum: false,
+  Socuoi:0,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -28,7 +29,8 @@ export default (state = INITIAL_STATE, action) => {
     case CHECK_USER:
       return { ...state, loading: true, error: '' };
     case CHECK_USER_SUCCESS:
-        return { ...state, ...INITIAL_STATE, writeNum:true, id:action.payload, user: action.payload };
+    // console.log(action.payload.Socuoi);
+        return { ...state, ...INITIAL_STATE, writeNum:true, id:action.payload.id, Socuoi:action.payload.Socuoi, user: action.payload };
     case CHECK_USER_FAIL:
       return { ...state, error: 'Sai ID', writeNum:false, loading: false };
     default:

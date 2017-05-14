@@ -148,6 +148,9 @@ const styles = StyleSheet.create({
 
   },
   input: {
+    width,
+    height:30,
+    marginTop:30,
     paddingHorizontal: 10,
     color: "#FFF",
     fontSize: 18,
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
       paddingHorizontal: 10,
       color: "#FFF",
       fontSize: 18,
-      backgroundColor: 'transparent'
+      // backgroundColor: 'transparent'
 
     },
 });

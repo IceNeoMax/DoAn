@@ -36,7 +36,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>TRUNG TÂM CẤP NƯỚC HÀ NỘI</b></a>
+            <a href="index.html" class="logo"><b>CÔNG TY TNHH 1 THÀNH VIÊN NƯỚC SẠCH HÀ NỘI</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
 
@@ -112,22 +112,22 @@
                   		<div class="col-md-3 col-sm-3 col-md-offset-2 box0">
                   			<div class="box1">
 					  			<span class="li_user"></span>
-					  			<h3>933</h3>
+					  			<h3><span class="members"></span></h3>
                   			</div>
-					  			<p>Hệ thống hiện có 933 khách hàng</p>
+					  			<p>Hệ thống hiện có <span class="members"></span> khách hàng</p>
                   		</div>
                   		<div class="col-md-3 col-sm-3 box0">
                   			<div class="box1">
 					  			<span class="li_cloud"></span>
-					  			<h3>+48</h3>
+					  			<h3>+<span class="errors"></span></h3>
                   			</div>
-					  			<p>48 thông báo lỗi từ khách hàng</p>
+					  			<p><span class="errors"></span> thông báo lỗi từ khách hàng</p>
                   		</div>
 
                   		<div class="col-md-3 col-sm-3 box0">
                   			<div class="box1">
 					  			<span class="li_data"></span>
-					  			<h3>OK!</h3>
+					  			<h3><span>OK!</span></h3>
                   			</div>
 					  			<p>Hệ thống chạy rất ổn định!</p>
                   		</div>
@@ -140,32 +140,32 @@
 					<div class="row mt">
                       <!--CUSTOM CHART START -->
                       <div class="border-head">
-                          <h3>Bảng thống kê nước trung bình</h3>
+                          <h3>Bảng thống kê sử dụng nước trung bình</h3>
                       </div>
-                      <div class="custom-bar-chart col-md-offset-2">
+                      <div class="custom-bar-chart col-md-offset-4">
                           <ul class="y-axis">
-                              <li><span>10.000</span></li>
-                              <li><span>8.000</span></li>
-                              <li><span>6.000</span></li>
-                              <li><span>4.000</span></li>
-                              <li><span>2.000</span></li>
+                              <li><span>75 m<sup>3</sup></span></li>
+                              <li><span>60 m<sup>3</sup></span></li>
+                              <li><span>45 m<sup>3</sup></span></li>
+                              <li><span>30 m<sup>3</sup></span></li>
+                              <li><span>15 m<sup>3</sup></span></li>
                               <li><span>0</span></li>
                           </ul>
                           <div class="bar">
                               <div class="title">Quý 1</div>
-                              <div class="value tooltips" data-original-title="8.500" data-toggle="tooltip" data-placement="top">85%</div>
+                              <div class="value tooltips q1" data-original-title="45" data-toggle="tooltip" data-placement="top">60%</div>
                           </div>
                           <div class="bar ">
                               <div class="title">Quý 2</div>
-                              <div class="value tooltips" data-original-title="5.000" data-toggle="tooltip" data-placement="top">50%</div>
+                              <div class="value tooltips q2" data-original-title="70" data-toggle="tooltip" data-placement="top">93%</div>
                           </div>
                           <div class="bar ">
                               <div class="title">Quý 3</div>
-                              <div class="value tooltips" data-original-title="6.000" data-toggle="tooltip" data-placement="top">60%</div>
+                              <div class="value tooltips q3" data-original-title="60" data-toggle="tooltip" data-placement="top">80%</div>
                           </div>
                           <div class="bar ">
                               <div class="title">Quý 4</div>
-                              <div class="value tooltips" data-original-title="4.500" data-toggle="tooltip" data-placement="top">45%</div>
+                              <div class="value tooltips q4" data-original-title="35" data-toggle="tooltip" data-placement="top">47%</div>
                           </div>
                       </div>
                       <!--custom chart end-->
@@ -207,22 +207,44 @@
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>
 	<script src="assets/js/zabuto_calendar.js"></script>
-
+  <script src="assets/js/axios.min.js"></script>
+  <script src="assets/js/firebase.js"></script>
 
 
 	<script type="application/javascript">
-        $(document).ready(function () {
-
+    $(document).ready(function () {
+      axios.get('http://localhost:3000/api/NSDs/')
+      .then(res=>{
+        // console.log(res);
+        $(".members").append(res.data.length);
+        axios.get('http://localhost:3000/api/Sucos/').then(res=>{$(".errors").append(res.data.length); })
+      });
+      let water = [];
+      for(var i=1; i<=12;i++){
+        axios.get('http://localhost:3000/api/Lichsugds?filter'+'[where][Thang]='+i+'&filter={"where":{"Nam":[2015,2016,2017]}}')
+        .then(res=>{
+          // console.log(res);
+          let temp = 0 ;
+          res.data.map(val=>temp+= val.Tongso);
+          if(i<=5) temp=temp/(3*res.data.length); if(i>5) temp=temp/(2*res.data.length);
+          // console.log(temp/(3*res.data.length));
+          // console.log(20,25.333,22.2,15);
+          // water.push(temp);
         });
 
+      }
+    // console.log(water);
 
-        function myNavFunction(id) {
-            $("#date-popover").hide();
-            var nav = $("#" + id).data("navigation");
-            var to = $("#" + id).data("to");
-            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-        }
-    </script>
+    });
+
+
+    function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  </script>
 
 
   </body>

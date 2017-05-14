@@ -1,0 +1,32 @@
+{
+  "name": "lichsusd",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "Ngaycat": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "luongnuoc": {
+      "type": "number",
+      "required": true
+    },
+    "Thang": {
+      "type": "number",
+      "required": true
+    },
+    "Nam": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

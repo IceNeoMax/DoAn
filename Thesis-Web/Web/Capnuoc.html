@@ -36,7 +36,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>TRUNG TÂM CẤP NƯỚC HÀ NỘI</b></a>
+            <a href="index.html" class="logo"><b>CÔNG TY TNHH 1 THÀNH VIÊN NƯỚC SẠCH HÀ NỘI</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
 
@@ -91,7 +91,7 @@
                           <li><a  href="Tramnuoc.html">Các Trạm</a></li>
                       </ul>
                   </li>
-                
+
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -109,35 +109,40 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Thêm Trạm</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input style="margin-bottom: 10px;" type="text" id="Ten" name="text" placeholder="Tên Trạm" autocomplete="off" class="form-control placeholder-no-fix">
-                        <input style="margin-bottom: 10px;" type="text" id="Diachi" name="text" placeholder="Địa Chỉ" autocomplete="off" class="form-control placeholder-no-fix">
-                        <input style="margin-bottom: 10px;" type="text" id="AddressCode" name="text" placeholder="Address Code" autocomplete="off" class="form-control placeholder-no-fix">
-
+                        <h4 class="modal-title">Bạn Chắc Chắn Muốn Thông Báo Cắt Nước?</h4>
                     </div>
                     <div class="modal-footer centered">
-                        <button data-dismiss="modal" class="btn btn-theme04" type="button">Thoát</button>
-                        <button class="btn btn-theme03 addTram" type="button">Thêm</button>
+                        <button id="buttonModal" data-dismiss="modal" class="btn btn-theme04" type="button">Thoát</button>
+                        <button id="buttonModal1" class="btn btn-theme03 notifToUser" type="button">Đồng Ý</button>
+                        <div id="doneSendNotif" style="display:none; color:green; text-align:center; font-size:18px; padding:10px;">Thành Công!</div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- modal -->
           <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i>Các Trạm Nước</h3>
-            <div class="row mt TramChinh">
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="content-panel">
-                    <h4><i class="fa fa-angle-right"></i> Thêm Trạm</h4>
-                    <div class="panel-body">
-                        <center>
-                          <i data-toggle="modal" href="#myModal" style="font-size: 15vh; color: rgba(29, 28, 28, 0.13);" class="fa fa-plus" aria-hidden="true"></i>
-                        </center>
-                    </div>
-                </div>
+            <h4><i class="fa fa-angle-right"></i>Lượng Nước Cung Cấp Quý 2 - 2016: 1500 m<sup>3</sup></h4>
+
+            <div class="row mt">
+              <div class="col-sm-5">
+                <h4><i class="fa fa-angle-right"></i>Lượng Nước Cấp(Giá Trị Trung Bình): </h4>
+              </div>
+              <div class="col-sm-5" style="margin-top:15px;">
+                <input type="text"  id="luongNuoc" class="form-control col-lg-4 col-md-4 col-sm-4" placeholder="Lượng Nước">
+              </div>
+              <div class="col-sm-2" style="margin-top:15px;">
+                <button class="btn btn-theme03 calculate" type="button">Tính</button>
+              </div>
+            </div>
+            <div class="row mt">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="font-size:16px;">
+                Lịch Cắt nước tháng tới:
+                <span style="display:none; color:blue;" class="khongCatNuoc">Không cần cắt nước</span>
+                <span tyle="color:blue;" class="lichCatNuoc"></span>
+                <div style="color:blue;padding-top:15px" class="tietKiem"></div>
+                <button style="display:none;" class="btn btn-theme02 notifUser" type="button">Thông Báo</button>
               </div><!-- col-lg-4 -->
+              <div class="TramChinh"></div>
             </div><!-- /row -->
 
     </section>
@@ -164,6 +169,7 @@
     <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
     <script src="assets/js/jquery.sparkline.js"></script>
     <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/firebase.js"></script>
 
 
     <!--common script for all pages-->
@@ -178,14 +184,151 @@
 
 
 
-	<script type="application/javascript">
-    $(document).ready(function () {
-      let date = new Date();
-      let month = date.getMonth()+1;
-      let year = date.getFullYear();
+<script type="application/javascript">
+var config = {
+  apiKey: "AIzaSyCoSRUrL9OYlxrhzkJb1I2GeR-ozJmqyW4",
+  authDomain: "thesis-cdeaa.firebaseapp.com",
+  databaseURL: "https://thesis-cdeaa.firebaseio.com",
+  storageBucket: "thesis-cdeaa.appspot.com",
+  messagingSenderId: "873234581670"
+};
+firebase.initializeApp(config);
+  $(document).ready(function () {
+    let date = new Date();
+    let month = date.getMonth()+2;
+    let year = date.getFullYear();
+    $('.calculate').click(()=>{
+      $('.lichCatNuoc').text('');
+      $('.tietKiem').text('');
+      $('.notifUser').css('display','none');
 
+      // console.log($('#luongNuoc').val());
+      if($('#luongNuoc').val()>=1500){
+        $('.khongCatNuoc').css('display','inline-block');
+        $('.notifUser').css('display','none');
+        $('.TramChinh').css('display','none');
+      }
+      else if($('#luongNuoc').val()<=1500&&$('#luongNuoc').val()!=''){
+        let waterLack = 1500 - $('#luongNuoc').val();
+        $('.TramChinh').css('display','inline-block');
+        $('.khongCatNuoc').css('display','none');
+
+        let t = parseInt(waterLack*30/1500);
+        let d = parseInt(30/t);
+        let days = [];
+        let days2 = [];
+        let days3 = [];
+        for (var i = d; i <= 30; i+=d) {
+          days.push(i);
+          if(i+4<=30){
+            days2.push(i+3);
+            days3.push(i+4);
+          }
+          if(i+3>30){
+            days2.unshift(i+3-30);
+            days3.unshift(i+4-30);
+          }
+        }
+        // $('.lichCatNuoc').append('Ngày');
+        // days.map(val=>$('.lichCatNuoc').append(' '+val));
+        // $('.lichCatNuoc').append(' Tháng'+month);
+        $('.tietKiem').append('Lượng nước bị cắt giảm là: '+waterLack+' m<sup>3</sup>');
+        $('.notifUser').css('display','inline-block');
+        console.log(t,d,days,days.length);
+        axios.get('http://localhost:3000/api/Trams/')
+          .then(res=>{
+            $('.TramChinh').html('');
+
+            let sub1 = "<div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'><div class='content-panel'><h4><i class='fa fa-angle-right'></i>Tên Trạm: "
+            let sub2 = "</h4><div class='panel-body'>"
+            res.data.map(val=>{
+              let dayMess = '';
+              if(val.AddCode==1) days.map(val=>dayMess=dayMess+val+' ');
+              if(val.AddCode==2) days2.map(val=>dayMess=dayMess+val+' ');
+              if(val.AddCode==3) days3.map(val=>dayMess=dayMess+val+' ');
+              else if(val.AddCode!=1&&val.AddCode!=2&&val.AddCode!=3)days.map(val=>dayMess=dayMess+val+' ');
+              let tempTT='';
+              if(val.Trangthai==true)
+              tempTT = 'Mở';
+              else tempTT = 'Đóng';
+              $('.TramChinh').append(sub1+val.Ten+sub2+'<h5>id: '+val.id+'</h5>'
+              +'<h5>Địa chỉ : '+val.Diachi+'</h5>'+'<h5>Address code: '+val.AddCode+'</h5>'
+              +'<h5>Ngày Cắt: '+dayMess+'</h5>'+'<h5>Lượng Nước Cắt: '+parseInt(waterLack/res.data.length)+' m<sup>3</sup></h5>'+'</div></div></div>');
+            });
+          });
+        $('.notifUser').click(()=>{
+          $('#myModal').modal('show');
+          $('.notifToUser').click(()=>{
+
+            axios.post('http://localhost:3000/api/lichsusds',{
+              "Ngaycat": days,
+              "luongnuoc": waterLack,
+              "Thang": month,
+              "Nam": year
+            }).then(()=>{
+              let now = ''+ date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear();
+              let mess = 'Lịch Cắt nước tháng '+month+': Ngày';
+              days.map(val=>{mess+=' '+val});
+              $('#buttonModal').css('display','none');
+              $('#buttonModal1').css('display','none');
+              $('#doneSendNotif').css('display','inline-block');
+              // sendNotificationWithData();
+              axios.post('http://localhost:3000/api/Thongbaos/',{
+                "User_id": 'none',
+                "Noidung": mess,
+                "Thoigian": now,
+              }).then(res=>{
+                console.log(res);
+              });
+
+            });
+          });
+        });
+      }
     });
-  </script>
+    var sendNotificationWithData = function(){
+
+      let body = {
+        "notification":{
+          "title": "Quản Lí Nước HN",
+          "body": "Thông báo cắt nước!",
+          "sound": "default",
+        },
+         "data":{
+          "title": "Simple FCM Client",
+          "mess": "Cắt nước!",
+          "remote": true
+        },
+        "to": "cmAi1vquABM:APA91bHCWEIQwuipHeN0PK7Ykkj0boxkXLIBd7M5rxT50zT53uVKsK63-ioBzhprkURIYkjr4HLt0I4Nk5KddvxGDaF5FfCsGV1Uf6oG-vaeG4QycTwx6d2sffH-l0p2GKyUi_DMmX_d",
+      }
+      let headers = new Headers({
+        "Content-Type": "application/json",
+        "Authorization": "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI"
+      });
+      var url = 'https://fcm.googleapis.com/fcm/send?ReadViewEntries&outputformat=json';
+      $.ajax({
+         url: url,
+         method: "POST",
+         dataType: "json",
+         crossDomain: true,
+         contentType: "application/json; charset=utf-8",
+         data: JSON.stringify(body),
+         cache: false,
+         beforeSend: function (xhr) {
+             / Authorization header /
+             xhr.setRequestHeader("Authorization", "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI");
+         },
+         success: function (data) {
+
+         },
+         error: function (jqXHR, textStatus, errorThrown) {
+
+         }
+      });
+
+    }
+  });
+</script>
 
 
   </body>

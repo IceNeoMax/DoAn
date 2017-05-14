@@ -22,7 +22,9 @@ import { localURL } from '../Global.js';
 const { width, height } = Dimensions.get("window");
 const background = require("../common/login1_bg.png");
 const doneImg = require('./Done.png');
-
+let date = new Date();
+let month = date.getMonth()+1;
+let year = date.getFullYear();
 class NVGS extends Component {
   constructor() {
     super();
@@ -30,9 +32,21 @@ class NVGS extends Component {
       isOpen: false,
       isDisabled: false,
       swipeToClose: true,
-      sliderValue: 0.3
+      sliderValue: 0.3,
+      soDau:0,
     };
   }
+  // componentWillMount(){
+  //   AsyncStorage.getItem("myKey")
+  //   .then(val=>{
+  //     axios.get(localURL+'/Lichsugds?filter[where][Thang]=5&[where][Nam]=2017')
+  //     .then(res=>{
+  //       res.data.map(data=>{
+  //         if(data.User_id == val) console.log(data);
+  //       })
+  //     })
+  //   })
+  // }
   onIdChange(text) {
     this.props.idChanged(text);
   }
@@ -49,11 +63,9 @@ class NVGS extends Component {
     this.props.checkUser({ id });
   }
   onSendPress() {
-    const { num1,num2, id } = this.props;
-    let num = parseInt(num2) - parseInt(num1);
-    let date = new Date();
-    let month = date.getMonth()+1;
-    let year = date.getFullYear();
+    const { Socuoi,num2, id } = this.props;
+    let num = parseInt(num2) - parseInt(Socuoi);
+
     axios.get(localURL+'/Gianuocs/58d9d4ad1732ce045e264cc5')
     .then(res => {
       let money = 0;
@@ -67,13 +79,31 @@ class NVGS extends Component {
         "User_id": id,
         "Thang": month,
         "Nam":year,
-        "Sodau": num1,
-        "Socuoi": num2,
+        "Sodau": parseInt(Socuoi),
+        "Socuoi": parseInt(num2),
         "Tongso": num,
         "TongTien": money,
         "Nocuoc": true,
-      })
-      .catch(err => {
+      }).then(res=>{
+        let headers = new Headers({
+      		"Content-Type": "application/json",
+          "Authorization": "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI"
+      	});
+        let body = {
+          //my fucking iporn6
+        	"to": "e89AvBimG9U:APA91bHCCjJU8ykKVsYkfAGOkfYbDD9VIIMvoVhpJ53csOdsFc1491d9muNj7e5a0NL_X7gZCtR-RejQH3M1CIH05HQGmqSOyWwn0YkbPXg93uDrRZSkXqU1SNp6FYnqWqlfJTaCbBIx",
+          //my fucking iporn 6 simulator
+          // "to": "fEOLctSTWL8:APA91bGF8wEjdbQS4U9rVKHdjDTCOIiYSTZbsV2DBGyFG4WCFSuowJ2oawyeH6IMix_AwGoVujlGcof-tS5VpJs_Y0UtK7yoqY8-zxLPvNWLO7-RfRlNHXgBOtE88supqKvRvJMeSLL0",
+          "notification":{
+        		"title": "Thesis",
+        		"body": "Thông báo tiền điện tháng "+ month,
+        		"sound": "default",
+        		"click_action": "fcm.ACTION.HELLO"
+        	}
+        }
+        fetch('https://fcm.googleapis.com/fcm/send', { method: "POST", headers, body:JSON.stringify(body) })
+      		.then(response => console.log("Send "+response));
+    }).catch(err => {
         console.log(err);
       });
     });
@@ -88,16 +118,35 @@ class NVGS extends Component {
         "Nocuoc": true,
         "Khoa":false
       }).then(res=> {
-        this.onNum1Change('');
+        // this.onNum1Change('');
         this.onNum2Change('');
         this.refs.modal3.open();
       });
     });
+
     // this.refs.modal3.open();
     // console.log(num);
   }
 
   renderButton(){
+    // let headers = new Headers({
+  	// 	"Content-Type": "application/json",
+    //   "Authorization": "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI"
+  	// });
+    // let body = {
+    //   //my fucking iporn6
+    // 	"to": "e89AvBimG9U:APA91bHCCjJU8ykKVsYkfAGOkfYbDD9VIIMvoVhpJ53csOdsFc1491d9muNj7e5a0NL_X7gZCtR-RejQH3M1CIH05HQGmqSOyWwn0YkbPXg93uDrRZSkXqU1SNp6FYnqWqlfJTaCbBIx",
+    //   //my fucking iporn 6 simulator
+    //   // "to": "fEOLctSTWL8:APA91bGF8wEjdbQS4U9rVKHdjDTCOIiYSTZbsV2DBGyFG4WCFSuowJ2oawyeH6IMix_AwGoVujlGcof-tS5VpJs_Y0UtK7yoqY8-zxLPvNWLO7-RfRlNHXgBOtE88supqKvRvJMeSLL0",
+    //   "notification":{
+    // 		"title": "Simple FCM Client",
+    // 		"body": "Thông báo tiền điện tháng "+ month,
+    // 		"sound": "default",
+    // 		"click_action": "fcm.ACTION.HELLO"
+    // 	}
+    // }
+    // fetch('https://fcm.googleapis.com/fcm/send', { method: "POST", headers, body:JSON.stringify(body) })
+  	// 	.then(response => console.log("Send "+response))
     if (this.props.loading) {
       return <Spinner style={{marginTop:20}} size="large" />;
     }
@@ -121,10 +170,10 @@ class NVGS extends Component {
               </Text>
               <TextInput
                 style={styles.inputText}
-                placeholder="Số Điện Đầu"
+                placeholder="Số Nước Đầu"
                 placeholderTextColor="#a9a9a9"
-                onChangeText={this.onNum1Change.bind(this)}
-                value={this.props.num1}
+
+                value={this.props.Socuoi.toString()}
               />
             </View>
             <View style={{width:150, height:50}}>
@@ -133,7 +182,7 @@ class NVGS extends Component {
               </Text>
               <TextInput
                 style={styles.inputText}
-                placeholder="Số Điện Cuối"
+                placeholder="Số Nước Cuối"
                 placeholderTextColor="#a9a9a9"
                 onChangeText={this.onNum2Change.bind(this)}
                 value={this.props.num2}
@@ -262,9 +311,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ nvgs }) => {
-  const { id, num1, num2, error, loading, writeNum } = nvgs;
+  const { id,Socuoi, num1, num2, error, loading, writeNum } = nvgs;
 
-  return { id, num1, num2, error, loading, writeNum };
+  return { id,Socuoi, num1, num2, error, loading, writeNum };
 };
 
 export default connect(mapStateToProps, {

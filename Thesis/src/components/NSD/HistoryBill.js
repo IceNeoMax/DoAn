@@ -49,7 +49,7 @@ class HistoryBill extends Component {
   }
   renderMonthData(month){
     let monthData = [];
-    console.log(this.state.YearData);
+    // console.log(this.state.YearData);
     this.state.YearData.map(val =>{
       //console.log(val);
       if(val.Thang==month)
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    paddingTop:50,
+    paddingTop:35,
     width,
     height,
   },

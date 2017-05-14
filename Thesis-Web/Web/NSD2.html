@@ -38,7 +38,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><b>TRUNG TÂM CẤP NƯỚC HÀ NỘI</b></a>
+            <a href="index.html" class="logo"><b>CÔNG TY TNHH 1 THÀNH VIÊN NƯỚC SẠCH HÀ NỘI</b></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
 
@@ -93,7 +93,7 @@
                           <li><a  href="Capnuoc.html">Cấp Nước</a></li>
                           <li><a  href="Tramnuoc.html">Các Trạm</a></li>
                       </ul>
-                  </li>              
+                  </li>
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -155,17 +155,27 @@
                   text-align: left;
                   box-shadow: 0px 3px 2px #aab2bd;
                   margin: 5px;
-                  font-size:18px;">
-                  <div class="panel-heading">
+                  ">
+                  <div class="panel-heading" style="font-size:18px;">
                         <div class="pull-left"><h5><i class="fa fa-tasks"></i> Lịch Sử Giao Dịch</h5></div>
 
                         <br>
                   </div>
-                        <div class="panel-body">
-                            <div class="task-content">
+                        <table class="table table-bordered table-striped table-condensed">
+                          <thead>
+                          <tr>
+                              <th>Năm</th>
+                              <th>Tháng</th>
+                              <th>Số Đầu</th>
+                              <th>Số Cuối</th>
+                              <th>Tổng Số</th>
+                              <th>Tổng Tiền</th>
+                          </tr>
+                          </thead>
+                          <tbody>
 
-                            </div>
-                        </div>
+                        </tbody>
+                    </table>
                 </div><!-- /col-md-12-->
             </div><!-- /row -->
 		    </section>
@@ -210,7 +220,7 @@
 
           axios.get('http://localhost:3000/api/NSDs/'+$('#id').val())
           .then(res=>{
-            console.log(res);
+            // console.log(res);
             let id = res.data.id;
             let name = "<div class='col-md-4'>Tên Khách Hàng:</div>";
             let diachi = "<div class='col-md-4'>Địa Chỉ:</div>";
@@ -236,10 +246,24 @@
                 $('.afterC').append(name+'<div class="col-md-6 inforD">'+res.data.Ten+'</div>'+diachi+'<div class="col-md-6 inforD">'+res.data.Diachi+'</div>'+addcode+'<div class="col-md-6 inforD">'+res.data.AddCode+'</div>');
                 $('.saveBtn').css('display','none');
                 $('.change-suc').css('display','block');
-
               });
-
             });
+            // let fakeId=id.slice(0,22)+7+id.slice(22,25);
+            // console.log(fakeId);
+            axios.get('http://localhost:3000/api/Lichsugds/')
+            .then(res=>{
+              // console.log(res);
+              let temp = [];
+              res.data.map(value =>{
+                if(value.User_id == id)
+                temp.push(value);
+              });
+              // console.log(temp);
+              temp.reverse();
+              for (let val in temp){
+                $('table tbody').append('<tr><td>'+temp[val].Nam+'</td><td>'+temp[val].Thang+'</td><td>'+temp[val].Sodau+'</td><td>'+temp[val].Socuoi+'</td><td>'+temp[val].Tongso+'</td><td>'+temp[val].TongTien+'đ</td></tr>');
+              }
+            })
           }).catch(()=>{
             $('.fa-spinner').css('visibility','hidden');
             $('.search-fail').css('visibility','visible');

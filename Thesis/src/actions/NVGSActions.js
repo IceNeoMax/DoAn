@@ -41,16 +41,26 @@ export const checkUser = ({ id }) => {
            if(val.id==id)
            check = true;
          });
-         if(check) this.setTimeout(() =>checkUserSuccess(dispatch, id),500);
+         let date = new Date();
+         let month = date.getMonth();
+       axios.get(localURL+'/Lichsugds?filter[where][Thang]='+month+'&[where][Nam]=2017')
+       .then(res=>{
+         let temp = 0;
+         res.data.map(data=>{
+           if(data.User_id == id &&data.Nam==2017) temp=data.Socuoi;
+         })
+         if(check) this.setTimeout(() =>checkUserSuccess(dispatch, id,temp),500);
          else checkUserFail(dispatch);
+        })
+
     }).catch(err => console.log(err));
    };
 };
 
-const checkUserSuccess = (dispatch, id) => {
+const checkUserSuccess = (dispatch, id,Socuoi) => {
   dispatch({
     type: CHECK_USER_SUCCESS,
-    payload: id
+    payload: {id,Socuoi}
   });
 };
 const checkUserFail = (dispatch) => {

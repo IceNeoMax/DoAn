@@ -10,7 +10,7 @@ import {
    ScrollView
 } from 'react-native';
 import axios from 'axios';
-import TestNoti from './TestNoti';
+// import TestNoti from './TestNoti';
 import { localURL } from '../Global.js';
 import { connect } from 'react-redux';
 
@@ -43,7 +43,7 @@ class NotifNsd extends Component {
         .then(resu=>{
           // console.log(resu.data);
           resu.data.map(value =>{
-            if(value.User_id == val)
+            if(value.User_id == val||value.User_id=='none')
             temp.push(value);
           });
           this.setState({notifs:temp.reverse()});
@@ -71,7 +71,6 @@ class NotifNsd extends Component {
         <Image source={background} style={styles.background}>
           <ScrollView>
               {this.renderData()}
-            <TestNoti />
           </ScrollView>
         </Image>
       </View>
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   background: {
-    paddingTop:50,
+    paddingTop:60,
     width,
     height,
   },
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     left:2
   },
   text: {
-    padding:10,
+    margin:10,
     fontSize:18,
     color: 'black'
   }

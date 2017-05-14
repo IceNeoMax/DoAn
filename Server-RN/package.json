@@ -8,6 +8,7 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "faker": "^4.1.0",
