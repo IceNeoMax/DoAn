@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -272,12 +273,31 @@ firebase.initializeApp(config);
               $('#buttonModal').css('display','none');
               $('#buttonModal1').css('display','none');
               $('#doneSendNotif').css('display','inline-block');
-              // sendNotificationWithData();
+              // let headers = new Headers({
+            	// 	"Content-Type": "application/json",
+              //   "Authorization": "key=AAAAy1DWSKY:APA91bHI12da87By5N6kczWNPNzIbGNKbO4mJtkULv6gBCStS9udk62PPtgTd8d9tWSQEnqLvMMPnqfiPmpcB_R_OLQmg8_Fm5PlnpkKgEFWSFroYw2e1ZGrwwF5pCmtlmmWAKWqYRqB"
+            	// });
+              // let body = {
+              //   //my fucking iporn6
+              // 	"to": "e89AvBimG9U:APA91bHCCjJU8ykKVsYkfAGOkfYbDD9VIIMvoVhpJ53csOdsFc1491d9muNj7e5a0NL_X7gZCtR-RejQH3M1CIH05HQGmqSOyWwn0YkbPXg93uDrRZSkXqU1SNp6FYnqWqlfJTaCbBIx",
+              //   //my fucking iporn 6 simulator
+              //   // "to": "fEOLctSTWL8:APA91bGF8wEjdbQS4U9rVKHdjDTCOIiYSTZbsV2DBGyFG4WCFSuowJ2oawyeH6IMix_AwGoVujlGcof-tS5VpJs_Y0UtK7yoqY8-zxLPvNWLO7-RfRlNHXgBOtE88supqKvRvJMeSLL0",
+              //   "notification":{
+              // 		"title": "Thesis",
+              // 		"body": "Thông báo cắt nước tháng "+ month,
+              // 		"sound": "default",
+              // 		"click_action": "fcm.ACTION.HELLO"
+              // 	}
+              // }
+              // axios('https://fcm.googleapis.com/fcm/send', { method: "POST", headers, body:JSON.stringify(body) })
+            	// 	.then(response => console.log("Send "+response));
               axios.post('http://localhost:3000/api/Thongbaos/',{
                 "User_id": 'none',
                 "Noidung": mess,
                 "Thoigian": now,
               }).then(res=>{
+                console.log(res);
+              }).catch(res=>{
                 console.log(res);
               });
 
@@ -286,47 +306,47 @@ firebase.initializeApp(config);
         });
       }
     });
-    var sendNotificationWithData = function(){
+    // var sendNotificationWithData = function(){
+    //
+    //   let body = {
+    //     "notification":{
+    //       "title": "Quản Lí Nước HN",
+    //       "body": "Thông báo cắt nước!",
+    //       "sound": "default",
+    //     },
+    //      "data":{
+    //       "title": "Simple FCM Client",
+    //       "mess": "Cắt nước!",
+    //       "remote": true
+    //     },
+    //     "to": "cmAi1vquABM:APA91bHCWEIQwuipHeN0PK7Ykkj0boxkXLIBd7M5rxT50zT53uVKsK63-ioBzhprkURIYkjr4HLt0I4Nk5KddvxGDaF5FfCsGV1Uf6oG-vaeG4QycTwx6d2sffH-l0p2GKyUi_DMmX_d",
+    //   }
+    //   let headers = new Headers({
+    //     "Content-Type": "application/json",
+    //     "Authorization": "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI"
+    //   });
+    //   var url = 'https://fcm.googleapis.com/fcm/send?ReadViewEntries&outputformat=json';
+    //   $.ajax({
+    //      url: url,
+    //      method: "POST",
+    //      dataType: "json",
+    //      crossDomain: true,
+    //      contentType: "application/json; charset=utf-8",
+    //      data: JSON.stringify(body),
+    //      cache: false,
+    //      beforeSend: function (xhr) {
+    //          / Authorization header /
+    //          xhr.setRequestHeader("Authorization", "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI");
+    //      },
+    //      success: function (data) {
+    //
+    //      },
+    //      error: function (jqXHR, textStatus, errorThrown) {
+    //
+    //      }
+    //   });
 
-      let body = {
-        "notification":{
-          "title": "Quản Lí Nước HN",
-          "body": "Thông báo cắt nước!",
-          "sound": "default",
-        },
-         "data":{
-          "title": "Simple FCM Client",
-          "mess": "Cắt nước!",
-          "remote": true
-        },
-        "to": "cmAi1vquABM:APA91bHCWEIQwuipHeN0PK7Ykkj0boxkXLIBd7M5rxT50zT53uVKsK63-ioBzhprkURIYkjr4HLt0I4Nk5KddvxGDaF5FfCsGV1Uf6oG-vaeG4QycTwx6d2sffH-l0p2GKyUi_DMmX_d",
-      }
-      let headers = new Headers({
-        "Content-Type": "application/json",
-        "Authorization": "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI"
-      });
-      var url = 'https://fcm.googleapis.com/fcm/send?ReadViewEntries&outputformat=json';
-      $.ajax({
-         url: url,
-         method: "POST",
-         dataType: "json",
-         crossDomain: true,
-         contentType: "application/json; charset=utf-8",
-         data: JSON.stringify(body),
-         cache: false,
-         beforeSend: function (xhr) {
-             / Authorization header /
-             xhr.setRequestHeader("Authorization", "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI");
-         },
-         success: function (data) {
-
-         },
-         error: function (jqXHR, textStatus, errorThrown) {
-
-         }
-      });
-
-    }
+    // }
   });
 </script>
 

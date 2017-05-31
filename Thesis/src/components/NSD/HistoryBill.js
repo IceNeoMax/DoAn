@@ -59,7 +59,7 @@ class HistoryBill extends Component {
      return (
       <View>
         <Text style={styles.text}>Trong tháng {monthData.Thang} - {monthData.Nam} quý khách đã sử dụng</Text>
-        <Text style={styles.text}>Tổng số điện: {monthData.Sodau} - {monthData.Socuoi} = {monthData.Tongso}</Text>
+        <Text style={styles.text}>Tổng số nước: {monthData.Sodau} - {monthData.Socuoi} = {monthData.Tongso}</Text>
         <Text style={styles.text}>Tổng số tiền: {monthData.TongTien}đ</Text>
       </View>
      );

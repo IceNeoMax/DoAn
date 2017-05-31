@@ -96,7 +96,7 @@ class NVGS extends Component {
           // "to": "fEOLctSTWL8:APA91bGF8wEjdbQS4U9rVKHdjDTCOIiYSTZbsV2DBGyFG4WCFSuowJ2oawyeH6IMix_AwGoVujlGcof-tS5VpJs_Y0UtK7yoqY8-zxLPvNWLO7-RfRlNHXgBOtE88supqKvRvJMeSLL0",
           "notification":{
         		"title": "Thesis",
-        		"body": "Thông báo tiền điện tháng "+ month,
+        		"body": "Thông báo tiền nước tháng "+ month,
         		"sound": "default",
         		"click_action": "fcm.ACTION.HELLO"
         	}
@@ -129,24 +129,7 @@ class NVGS extends Component {
   }
 
   renderButton(){
-    // let headers = new Headers({
-  	// 	"Content-Type": "application/json",
-    //   "Authorization": "key=AIzaSyDFgzzvZv6vtVeo8R7BGJ1cgi2X0xb2HyI"
-  	// });
-    // let body = {
-    //   //my fucking iporn6
-    // 	"to": "e89AvBimG9U:APA91bHCCjJU8ykKVsYkfAGOkfYbDD9VIIMvoVhpJ53csOdsFc1491d9muNj7e5a0NL_X7gZCtR-RejQH3M1CIH05HQGmqSOyWwn0YkbPXg93uDrRZSkXqU1SNp6FYnqWqlfJTaCbBIx",
-    //   //my fucking iporn 6 simulator
-    //   // "to": "fEOLctSTWL8:APA91bGF8wEjdbQS4U9rVKHdjDTCOIiYSTZbsV2DBGyFG4WCFSuowJ2oawyeH6IMix_AwGoVujlGcof-tS5VpJs_Y0UtK7yoqY8-zxLPvNWLO7-RfRlNHXgBOtE88supqKvRvJMeSLL0",
-    //   "notification":{
-    // 		"title": "Simple FCM Client",
-    // 		"body": "Thông báo tiền điện tháng "+ month,
-    // 		"sound": "default",
-    // 		"click_action": "fcm.ACTION.HELLO"
-    // 	}
-    // }
-    // fetch('https://fcm.googleapis.com/fcm/send', { method: "POST", headers, body:JSON.stringify(body) })
-  	// 	.then(response => console.log("Send "+response))
+    
     if (this.props.loading) {
       return <Spinner style={{marginTop:20}} size="large" />;
     }
